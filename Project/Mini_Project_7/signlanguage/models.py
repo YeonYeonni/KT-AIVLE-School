@@ -1,0 +1,24 @@
+from django.db import models
+from django.conf import settings
+# Create your models here.
+
+class Result(models.Model):
+    image = models.ImageField(blank=True)
+    answer = models.CharField(max_length=10)
+    result = models.CharField(max_length=10)
+    pub_date = models.DateTimeField('date published')
+    image_arr = []
+    ans_arr = []
+
+class AiModel(models.Model):
+    file = models.FileField()
+    name = models.CharField(max_length=30)
+    version = models.CharField(default="1.0v", max_length=30)
+    prediction_count = models.IntegerField(default=0)
+    answer_count = models.IntegerField(default=0)
+    is_using = models.BooleanField(default=0)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name

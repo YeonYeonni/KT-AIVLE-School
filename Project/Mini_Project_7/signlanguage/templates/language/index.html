@@ -1,0 +1,11 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'language/style.css' %}">
+<form action="upload" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h1>파일 업로드</h1></legend>
+        <input name="files" type="file" multiple='multiple'>
+       
+    </fieldset>
+    <div><input type="submit" value="업로드"></div>
+    </form>
